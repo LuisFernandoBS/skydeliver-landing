@@ -2,7 +2,7 @@
   <div class="min-h-screen min-w-screen max-w-screen flex flex-col bg-fundo dark:bg-fundo-dark">
 
     <header class="grid grid-cols-1 md:grid-cols-10">
-      <img src="../assets/images/drone-menu.png" alt="drone menu" class="w-16 h-16 md:w-22 md:h-22 drone-menu fixed md:left-5 2xl:left-40" />
+        <div class="div-drone-menu fixed md:left-5 2xl:left-40"><img src="../assets/images/drone-menu.png" alt="drone menu" class="w-16 h-16 md:w-22 md:h-22 drone-menu"/></div>
         <div class="div-nav col-span-1 col-start-1 md:col-span-8 2xl:col-span-6 md:col-start-2 2xl:col-start-3">
             <nav class="grid grid-cols-1 md:grid-cols-4 2xl:grid-cols-6 items-center md:gap-2 2xl:gap-4 py-7">
                 <div class="col-span-1 col-start-1 anim-col delay-1">
@@ -75,15 +75,37 @@
   @keyframes fadeOutRight {
     0% {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateX(0) translateY(0);
     }
     95% {
       opacity: 1;
     }
     100% {
       opacity: 0;
-      transform: translateX(100vw);
+      transform: translateX(100vw) translateY(0);
       visibility: hidden;
+    }
+  }
+
+  @keyframes animacaoInclinacaoSaida {
+    0% {
+      rotate: 0deg;
+    }
+    100% {
+      rotate: 15deg;
+    }
+  }
+
+  @keyframes animacaoInclinacaoEntrada {
+    0% {
+      rotate: 15deg;
+    }
+    60% {
+      rotate: -5deg;
+    }
+    80% { rotate: 5deg; }
+    100% {
+      rotate: 0deg;
     }
   }
 
@@ -94,6 +116,11 @@
   }
 
   .drone-menu {
+    rotate: 15deg;
+    animation: animacaoInclinacaoEntrada 3s ease forwards, animacaoInclinacaoSaida 500ms ease 3s forwards;
+  }
+
+  .div-drone-menu {
     animation: bounceInLeft 3s ease forwards, fadeOutRight 4s ease 3s forwards;
   }
 
