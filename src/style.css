@@ -29,23 +29,26 @@
 
 @theme {
     --color-primaria: #2563EB;
-    --color-primaria-dark: #3B82F6;
-
     --color-secundaria: #64748B;
-    --color-secundaria-dark: #CBD5E1;
-
     --color-fundo: #F8FAFC;
-    --color-fundo-dark: #0F172A;
-
     --color-texto: #0F172A;
-    --color-texto-dark: #F1F5F9;
-
     --color-acento: #22D3EE;
-    --color-acento-dark: #06B6D4;
+    --color-destaque: #6366F1;
 
     --font-montserrat: 'Montserrat', sans-serif;
     --font-montserrat-bold: 'Montserrat-Bold', sans-serif;
 
     --font-opensans: 'OpenSans', sans-serif;
     --font-opensans-bold: 'OpenSans-Bold', sans-serif;
+}
+
+@layer theme {
+  .dark {
+    --color-primaria: #3B82F6;
+    --color-secundaria: #CBD5E1;
+    --color-fundo: #0F172A;
+    --color-texto: #F1F5F9;
+    --color-acento: #06B6D4;
+    --color-destaque: #A5B4FC; 
+  }
 }
