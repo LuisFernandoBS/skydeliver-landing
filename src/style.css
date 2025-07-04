@@ -15,6 +15,12 @@
 }
 
 @font-face {
+  font-family: 'Montserrat-Light';
+  src: url('./assets/fonts/montserrat/Montserrat-Light.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'OpenSans';  
   src: url('./assets/fonts/OpenSans/OpenSans-Regular.ttf') format('truetype');
   font-style: normal;
@@ -30,13 +36,15 @@
 @theme {
     --color-primaria: #2563EB;
     --color-secundaria: #64748B;
-    --color-fundo: #F8FAFC;
+    --color-fundo: #CBD5E1;
+    --color-fundo-2:   #E2E8F0;
     --color-texto: #0F172A;
     --color-acento: #22D3EE;
     --color-destaque: #6366F1;
 
     --font-montserrat: 'Montserrat', sans-serif;
     --font-montserrat-bold: 'Montserrat-Bold', sans-serif;
+    --font-montserrat-light: 'Montserrat-Light', sans-serif;
 
     --font-opensans: 'OpenSans', sans-serif;
     --font-opensans-bold: 'OpenSans-Bold', sans-serif;
@@ -47,6 +55,7 @@
     --color-primaria: #3B82F6;
     --color-secundaria: #CBD5E1;
     --color-fundo: #0F172A;
+    --color-fundo-2: #1E293B;
     --color-texto: #F1F5F9;
     --color-acento: #06B6D4;
     --color-destaque: #A5B4FC; 
