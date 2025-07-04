@@ -37,7 +37,7 @@
     --color-primaria: #2563EB;
     --color-secundaria: #64748B;
     --color-fundo: #CBD5E1;
-    --color-fundo-2:   #E2E8F0;
+    --color-fundo-2: #E2E8F0;
     --color-texto: #0F172A;
     --color-acento: #22D3EE;
     --color-destaque: #6366F1;
@@ -60,4 +60,37 @@
     --color-acento: #06B6D4;
     --color-destaque: #A5B4FC; 
   }
+}
+
+@keyframes fadeInLeftDefault {
+  0% {
+      opacity: 0;
+      transform: translateX(-50px);
+  }
+
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+	0% {
+    opacity: 1;
+		transform: scale(0);
+	}
+	100% {
+    opacity: 1;
+		transform: scale(1);
+	}
 }
