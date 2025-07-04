@@ -39,9 +39,14 @@
             </a>
         </div>
     </section>
+    <section class="flex h-screen">
+        <SessaoComoFunciona />
+    </section>
 </template>
 
 <script setup>
+import SessaoComoFunciona from './Inicio/SessaoComoFunciona.vue';
+
 </script>
 
 <style scoped>
@@ -121,7 +126,7 @@
     }
 
     .div-hero-inicio{
-        animation: FadeInLeft 700ms ease-in forwards;
+        animation: fadeInLeftDefault 700ms ease-in forwards;
     }
 
     @keyframes BrilhandoImagem {
@@ -216,18 +221,6 @@
         100% {
             visibility: visible;
             transform: scale(1) translateX(-20%) translateY(0%);
-        }
-    }
-
-    @keyframes FadeInLeft {
-        0% {
-            opacity: 0;
-            transform: translateX(-50px);
-        }
-
-        100% {
-            opacity: 1;
-            transform: translateX(0);
         }
     }
 
