@@ -8,6 +8,36 @@
             <img src="@/assets/images/city.jpg" alt="city" class="imagem-blob">
         </div>
         <img src="@/assets/images/drone-blob.png" alt="drone-blob" class="drone-blob">
+        <div class="flex flex-col justify-start items-center w-[46vw] h-[50%] mt-50 p-8 pl-18 div-hero-inicio">
+            <h1 class="text-4xl lg:text-6xl text-center font-bold text-texto mb-4 font-opensans-bold text-shadow-xs text-shadow-texto">
+                Entregas aéreas mais rápidas e inteligentes
+            </h1>
+            <p class="text-lg md:text-2xl text-texto mb-2 font-montserrat text-shadow-xs text-shadow-texto">Com a <span class="text-acento">Sky</span>Delivery, sua encomenda chega voando até você.</p>
+            <p class="text-[14px] text-texto mb-8 px-10 font-montserrat-light">Tecnologia com drones autônomos para entregas mais seguras, ecológicas e rápidas.</p>
+            <a
+            class="group relative inline-flex items-center overflow-hidden rounded-sm bg-primaria px-8 py-3 text-texto focus:ring-3 focus:outline-hidden"
+            href="#"
+            >
+                <span class="absolute -end-full transition-all group-hover:end-4">
+                    <svg
+                    class="size-5 shadow-sm rtl:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                    </svg>
+                </span>
+
+                <span class="text-sm font-medium transition-all font-montserrat-bold group-hover:me-4"> Comece agora </span>
+            </a>
+        </div>
     </section>
 </template>
 
@@ -83,9 +113,16 @@
         top: -6%;
         right: 0%;
         visibility: hidden;
-        animation: entradaDrone 3s ease-in-out 7.1s forwards, balancarDrone 8s ease-in-out 10.1s infinite;
+        animation: entradaDrone 3s ease-in-out 6.1s forwards, balancarDrone 8s ease-in-out 10.1s infinite;
     }
-    
+
+    .titulo-sombra {
+        text-shadow: 2px 2px 6px rgb(0 0 0 / 88%);
+    }
+
+    .div-hero-inicio{
+        animation: FadeInLeft 700ms ease-in forwards;
+    }
 
     @keyframes BrilhandoImagem {
         0% {
@@ -155,19 +192,19 @@
 
     @keyframes balancarDrone {
         0% {
-            transform: translateX(-25%) translateY(0);
+            transform: translateX(-20%) translateY(0);
         }
         25% {
-            transform: translateX(-25%) translateY(-7px);
+            transform: translateX(-20%) translateY(-7px);
         }
         40% {
-            transform: translateX(-25%) translateY(6px);
+            transform: translateX(-20%) translateY(6px);
         }
         75% {
-            transform: translateX(-25%) translateY(-4.5px);
+            transform: translateX(-20%) translateY(-4.5px);
         }
         100% {
-            transform:translateX(-25%) translateY(0);
+            transform:translateX(-20%) translateY(0);
         }
     }
 
@@ -178,7 +215,19 @@
         }
         100% {
             visibility: visible;
-            transform: scale(1) translateX(-25%) translateY(0%);
+            transform: scale(1) translateX(-20%) translateY(0%);
+        }
+    }
+
+    @keyframes FadeInLeft {
+        0% {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0);
         }
     }
 
