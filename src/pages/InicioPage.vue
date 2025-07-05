@@ -39,14 +39,24 @@
             </a>
         </div>
     </section>
-    <section class="flex h-screen">
+    <section class="flex h-screen" v-scroll-anim>
         <SessaoComoFunciona />
     </section>
 </template>
 
 <script setup>
-import SessaoComoFunciona from './Inicio/SessaoComoFunciona.vue';
+    import SessaoComoFunciona from './Inicio/SessaoComoFunciona.vue';
+    import scrollAnim from '@/directives/v-scroll-anim.js'
 
+    defineExpose()
+</script>
+
+<script>
+    export default {
+        directives: {
+            scrollAnim
+        }
+    }
 </script>
 
 <style scoped>

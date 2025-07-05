@@ -56,26 +56,42 @@
 <script setup>
 
 </script>
-<style scope>
+
+<style lang="scss" scope>
+
 
     .etapa-entrega .pointer-events-none{
         opacity: 0;
-        animation: expandindoParaBaixo 0.6s ease-out forwards;
     }
 
     .etapa-entrega>.flex-shrink-0{
         opacity: 0;
-        animation: scaleIn 0.6s ease-out forwards;
     }
     
     .descricao-etapa{
         opacity: 0;
-        animation: fadeIn 0.6s ease-out forwards;
     }
     
     img.object-cover{
         opacity: 0;
-        animation: scaleIn 1.4s ease-out forwards;
+    }
+
+    .sessao-ativa{
+        .etapa-entrega .pointer-events-none{
+            animation: expandindoParaBaixo 0.6s ease-out forwards;
+        }
+
+        .etapa-entrega>.flex-shrink-0{
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+        
+        .descricao-etapa{
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        img.object-cover{
+            animation: scaleIn 1.4s ease-out forwards;
+        }
     }
 
     .etapa-entrega:nth-child(2) .pointer-events-none, .etapa-entrega:nth-child(2) .descricao-etapa{
