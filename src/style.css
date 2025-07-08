@@ -35,6 +35,7 @@
 
 @theme {
     --color-primaria: #2563EB;
+    --color-primaria-light: rgb(72, 139, 248);
     --color-secundaria: #64748B;
     --color-fundo: #CBD5E1;
     --color-fundo-2: #E2E8F0;
@@ -52,7 +53,8 @@
 
 @layer theme {
   .dark {
-    --color-primaria: #3B82F6;
+    --color-primaria: #2563EB;
+    --color-primaria-light: rgb(51, 124, 241);
     --color-secundaria: #CBD5E1;
     --color-fundo: #0F172A;
     --color-fundo-2: #1E293B;
