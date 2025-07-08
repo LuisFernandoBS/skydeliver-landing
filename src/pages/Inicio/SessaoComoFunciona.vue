@@ -3,7 +3,7 @@
         <div class="flex flex-wrap w-full">
             <div class="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6 animate-[entradaEsquerda_1.5s_ease-out_forwards]">
                 <h2 class="text-4xl text-center font-opensans-bold text-texto mb-12">Como funciona a entrega pela SkyDelivery?</h2>
-                <div class="flex relative pb-24 etapa-entrega">
+                <div class="flex relative pb-24 etapa-entrega" :class="{'etapa-ativa': ativaAnimacaoEtapa === 1}">
                     <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
                         <div class="h-full w-1 bg-texto pointer-events-none"></div>
                     </div>
@@ -15,7 +15,7 @@
                         <p class="leading-relaxed text-texto font-opensans">Você faz seu pedido online através da nossa plataforma.</p>
                     </div>
                 </div>
-                <div class="flex relative pb-24 etapa-entrega">
+                <div class="flex relative pb-24 etapa-entrega" :class="{'etapa-ativa': ativaAnimacaoEtapa === 2}">
                     <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
                         <div class="h-full w-1 bg-texto pointer-events-none"></div>
                     </div>
@@ -27,7 +27,7 @@
                         <p class="leading-relaxed text-texto font-opensans">O drone é automaticamente carregado com sua encomenda.</p>
                     </div>
                 </div>
-                <div class="flex relative pb-24 etapa-entrega">
+                <div class="flex relative pb-24 etapa-entrega" :class="{'etapa-ativa': ativaAnimacaoEtapa === 3}">
                     <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
                         <div class="h-full w-1 bg-texto pointer-events-none"></div>
                     </div>
@@ -39,7 +39,7 @@
                         <p class="leading-relaxed text-texto font-opensans">O drone navega até o seu endereço de forma segura e rápida.</p>
                     </div>
                 </div>
-                <div class="flex relative etapa-entrega">
+                <div class="flex relative etapa-entrega" :class="{'etapa-ativa': ativaAnimacaoEtapa === 4}">
                     <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primaria inline-flex items-center justify-center relative z-10">
                         🏠
                     </div>
@@ -49,16 +49,43 @@
                     </div>
                 </div>
             </div>
-            <img class="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12" src="@/assets/images/cidade-percurso.png" alt="step">
+            <div class="lg:w-3/5 md:w-1/2 md:mt-0 mt-12 relative">
+                <!-- Etapa 1 -->
+                <img id="notificacaoPercurso" 
+                class="w-[32px] h-[32px] object-cover object-center absolute z-3 top-[28.5%] left-[10.5%]"
+                :class="{'etapa-ativa': ativaAnimacaoEtapa === 1}" 
+                src="@/assets/images/push-notification.png" alt="push notification">
+                <img id="smartphonePercurso" class="w-[64px] h-[64px] object-cover object-center absolute z-2 top-[29%] left-[6.5%]"
+                :class="{'etapa-ativa': ativaAnimacaoEtapa === 1}"
+                src="@/assets/images/smartphone.png" alt="smartphone">
+                <img id="zoomSmartphonePercurso" class="w-[165px] h-[165px] object-contain object-center absolute z-4 top-[26%] left-[1.5%]" 
+                :class="{'etapa-ativa': ativaAnimacaoEtapa === 1}"
+                src="@/assets/images/zoom.png" alt="smartphone zoom">
+                <!-- Cidade -->
+                <img id="cidadePercurso" class="w-[95%] h-[95%] mx-[2.5%] object-contain object-center rounded-lg md:mt-0 mt-12" 
+                src="@/assets/images/cidade-percurso.png" alt="cidade percurso">
+            </div>
         </div>
     </div>
 </template>
 <script setup>
+    import { ref } from 'vue';
 
+    const ativaAnimacaoEtapa = ref(1);
+
+    function ativarAnimacao() {
+        setInterval(() => {
+            ativaAnimacaoEtapa.value++;
+            if (ativaAnimacaoEtapa.value > 4) {
+                ativaAnimacaoEtapa.value = 1;
+            }
+        }, 6500);        
+    }
+
+    defineExpose({ ativarAnimacao });
 </script>
 
 <style lang="scss" scope>
-
 
     .etapa-entrega .pointer-events-none{
         opacity: 0;
@@ -72,7 +99,19 @@
         opacity: 0;
     }
     
-    img.object-cover{
+    #cidadePercurso{
+        opacity: 0;
+    }
+
+    #smartphonePercurso{
+        opacity: 0;
+    }
+
+    #notificacaoPercurso{
+        opacity: 0;
+    }
+    
+    #zoomSmartphonePercurso{
         opacity: 0;
     }
 
@@ -89,9 +128,34 @@
             animation: fadeIn 0.6s ease-out forwards;
         }
         
-        img.object-cover{
+        #cidadePercurso{
             animation: scaleIn 1.4s ease-out forwards;
         }
+    }
+
+    #zoomSmartphonePercurso.etapa-ativa{
+        animation: expandindoParaCima 0.5s ease-out forwards;
+    }
+
+    #smartphonePercurso.etapa-ativa{
+        animation: fadeInScale 1.4s ease-out 0.5s forwards;
+    }
+
+    #notificacaoPercurso.etapa-ativa{
+        animation: expandindoParaCima 0.5s ease-out 1.9s forwards, shakeLeft 4s ease 2.4s infinite;
+    }
+    
+    .etapa-entrega.etapa-ativa .rounded-full::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: var(--color-primaria);
+        animation: box 1.5s ease-in-out infinite;
+        z-index: -1;
     }
 
     .etapa-entrega:nth-child(2) .pointer-events-none, .etapa-entrega:nth-child(2) .descricao-etapa{
@@ -127,9 +191,6 @@
         animation-delay: 3.1s;
     }
 
-
-
-
     @keyframes entradaEsquerda {
         0% {
             opacity: 0;
@@ -154,7 +215,94 @@
             transform: rotateX(0deg);
             transform-origin: top;
         }
-    }    
+    }
 
+    @keyframes fadeInScale {
+        0% {
+            opacity: 0;
+            transform: scale(0.6);
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes expandindoParaCima {
+        0% {
+            opacity: 1;
+            transform: scale(0);
+            transform-origin: 50% 100%;
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1);
+            transform-origin: 50% 100%;
+        }
+    }
+
+    @keyframes shakeLeft {
+        0%,
+        100% {
+            transform: rotate(0deg);
+            transform-origin: 0 50%;
+        }
+
+        10% {
+            transform: rotate(2deg);
+        }
+
+        20%,
+        40%,
+        60% {
+            transform: rotate(-4deg);
+        }
+
+        30%,
+        50%,
+        70% {
+            transform: rotate(4deg);
+        }
+
+        80% {
+            transform: rotate(-2deg);
+        }
+
+        90% {
+            transform: rotate(2deg);
+        }
+    }
+
+    @keyframes pulse {
+        0% {
+            background: var(--color-primaria);
+            border: 0px solid var(--color-primaria);
+            opacity: 0;
+        }
+        50% {
+            background: var(--color-primaria);
+            border: 30px solid var(--color-primaria);
+            opacity: 0.8;
+        }
+        100% {
+            background: var(--color-primaria);
+            border: 0px solid var(--color-primaria);
+            opacity: 0;
+        }
+    }
+
+    @keyframes box {
+        0% {
+            box-shadow: 0 0 0 0 var(--color-primaria);
+        }
+        50% {
+            box-shadow: 0 0 5px 10px var(--color-primaria-light);
+        }
+        100% {
+            box-shadow: 0 0 0 0 var(--color-primaria);
+        }
+    }
 
 </style>

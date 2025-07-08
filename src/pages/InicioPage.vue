@@ -39,16 +39,23 @@
             </a>
         </div>
     </section>
-    <section class="flex h-screen" v-scroll-anim>
-        <SessaoComoFunciona />
+    <section id="sessaoComoFunciona" class="flex h-screen" v-scroll-anim="{ onEnter: carregaAtivarAnimacao }">
+        <SessaoComoFunciona ref="refSessao"/>
     </section>
 </template>
 
 <script setup>
+    import { ref, nextTick } from 'vue';
     import SessaoComoFunciona from './Inicio/SessaoComoFunciona.vue';
-    import scrollAnim from '@/directives/v-scroll-anim.js'
+    import scrollAnim from '@/directives/v-scroll-anim.js';
 
-    defineExpose()
+    const refSessao = ref();
+
+    function carregaAtivarAnimacao() {
+        nextTick(() => {
+            refSessao.value?.ativarAnimacao();
+        })
+    }
 </script>
 
 <script>
