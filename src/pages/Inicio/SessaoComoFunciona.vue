@@ -53,13 +53,19 @@
                 <!-- Etapa 1 -->
                 <img id="notificacaoPercurso" 
                 class="w-[32px] h-[32px] object-cover object-center absolute z-3 top-[28.5%] left-[10.5%]"
-                :class="{'etapa-ativa': ativaAnimacaoEtapa === 1}" 
+                :class="{'etapa-ativa': ativaAnimacaoEtapa === 1, 'fade-out': ativaAnimacaoEtapa - 1 === 1}" 
                 src="@/assets/images/push-notification.png" alt="push notification">
                 <img id="smartphonePercurso" class="w-[64px] h-[64px] object-cover object-center absolute z-2 top-[29%] left-[6.5%]"
-                :class="{'etapa-ativa': ativaAnimacaoEtapa === 1}"
+                :class="{'etapa-ativa': ativaAnimacaoEtapa === 1, 'fade-out': ativaAnimacaoEtapa - 1 === 1}"
                 src="@/assets/images/smartphone.png" alt="smartphone">
+                <!-- Etapa 2 -->
+                <div id="backgroundEtapa2" class="rounded-full w-[92px] h-[95px] top-[26%] left-[5.5%] absolute bg-gray-500 flex justify-center items-center" :class="{'etapa-ativa': ativaAnimacaoEtapa === 2, 'fade-out': ativaAnimacaoEtapa - 1 === 2}">
+                    <img id="preparoDrone" class="w-[64px] h-[64px] object-cover object-center z-2"
+                    :class="{'etapa-ativa': ativaAnimacaoEtapa === 2, 'fade-out': ativaAnimacaoEtapa - 1 === 2}"
+                    src="@/assets/images/drone-preparo.png" alt="preparo drone">
+                </div>
                 <img id="zoomSmartphonePercurso" class="w-[165px] h-[165px] object-contain object-center absolute z-4 top-[26%] left-[1.5%]" 
-                :class="{'etapa-ativa': ativaAnimacaoEtapa === 1}"
+                :class="{'etapa-ativa': ativaAnimacaoEtapa === 1 || ativaAnimacaoEtapa === 2}"
                 src="@/assets/images/zoom.png" alt="smartphone zoom">
                 <!-- Cidade -->
                 <img id="cidadePercurso" class="w-[95%] h-[95%] mx-[2.5%] object-contain object-center rounded-lg md:mt-0 mt-12" 
@@ -71,15 +77,18 @@
 <script setup>
     import { ref } from 'vue';
 
-    const ativaAnimacaoEtapa = ref(1);
+    const ativaAnimacaoEtapa = ref(0);
 
     function ativarAnimacao() {
-        setInterval(() => {
-            ativaAnimacaoEtapa.value++;
-            if (ativaAnimacaoEtapa.value > 4) {
-                ativaAnimacaoEtapa.value = 1;
-            }
-        }, 6500);        
+        let loopEtapas = null;
+        setTimeout(() => {
+            loopEtapas = setInterval(() => {
+                ativaAnimacaoEtapa.value++;
+                if (ativaAnimacaoEtapa.value > 4) {
+                    ativaAnimacaoEtapa.value = 1;
+                }
+            }, 6500);
+        }, 1000);
     }
 
     defineExpose({ ativarAnimacao });
@@ -115,6 +124,14 @@
         opacity: 0;
     }
 
+    #backgroundEtapa2{
+        opacity: 0;
+    }
+
+    #preparoDrone{
+        opacity: 0;
+    }
+
     .sessao-ativa{
         .etapa-entrega .pointer-events-none{
             animation: expandindoParaBaixo 0.6s ease-out forwards;
@@ -144,6 +161,14 @@
     #notificacaoPercurso.etapa-ativa{
         animation: expandindoParaCima 0.5s ease-out 1.9s forwards, shakeLeft 4s ease 2.4s infinite;
     }
+
+    #backgroundEtapa2.etapa-ativa{
+        animation: fadeIn 0.5s ease-in-out forwards;
+    }
+
+    #backgroundEtapa2.etapa-ativa,#preparoDrone.etapa-ativa{
+        animation: fadeIn 0.5s ease-in-out forwards;
+    }
     
     .etapa-entrega.etapa-ativa .rounded-full::before{
         content: '';
@@ -156,6 +181,14 @@
         background-color: var(--color-primaria);
         animation: box 1.5s ease-in-out infinite;
         z-index: -1;
+    }
+
+    #smartphonePercurso.fade-out,#notificacaoPercurso.fade-out,#backgroundEtapa2.fade-out,#preparoDrone.fade-out{
+        animation: fadeOut 0.5s ease-in-out forwards;
+    }
+    
+    #backgroundEtapa2.etapa-ativa,#preparoDrone.etapa-ativa{
+        animation-delay: 0.5s;
     }
 
     .etapa-entrega:nth-child(2) .pointer-events-none, .etapa-entrega:nth-child(2) .descricao-etapa{
