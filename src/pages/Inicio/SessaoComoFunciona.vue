@@ -65,37 +65,66 @@
                     src="@/assets/images/drone-preparo.png" alt="preparo drone">
                 </div>
                 <img id="zoomSmartphonePercurso" class="w-[165px] h-[165px] object-contain object-center absolute z-4 top-[26%] left-[1.5%]" 
-                :class="{'etapa-ativa': ativaAnimacaoEtapa === 1 || ativaAnimacaoEtapa === 2,'fade-out': ativaAnimacaoEtapa - 1 === 3}"
+                :class="{'etapa-ativa': ativaAnimacaoEtapa === 1 || ativaAnimacaoEtapa === 2,'fade-out': ativaAnimacaoEtapa - 1 === 2}"
                 src="@/assets/images/zoom.png" alt="smartphone zoom">
                 <!-- Etapa 3 -->
-                <img id="droneEntrega" class="w-[64px] h-[64px] object-cover object-center absolute z-2 top-[26%] left-[5.5%]"
-                :class="{'etapa-ativa': ativaAnimacaoEtapa === 3,'fade-out': ativaAnimacaoEtapa - 1 === 3}"
+                <img ref="droneEntrega" id="droneEntrega" class="w-[64px] h-[64px] object-cover object-center absolute z-2 top-[30%] left-[9%] lg:top-[35%]"
+                :class="{'etapa-ativa': ativaAnimacaoEtapa === 3}"
+                :style="{ animation: ativaAnimacaoEtapa === 3 ? animacaoDrone: 'none' }"
                 src="@/assets/images/drone-etapa-2.png" alt="drone entrega">
                 <!-- Cidade -->
-                <img id="cidadePercurso" class="w-[95%] h-[95%] mx-[2.5%] object-contain object-center rounded-lg md:mt-0 mt-12" 
+                <img ref="cidadePercurso" id="cidadePercurso" class="w-[95%] h-[95%] mx-[2.5%] object-contain object-center rounded-lg md:mt-0 mt-12" 
                 src="@/assets/images/cidade-percurso.png" alt="cidade percurso">
             </div>
         </div>
     </div>
 </template>
 <script setup>
-    import { ref } from 'vue';
+    import { ref, onBeforeUnmount } from 'vue';
 
-    const ativaAnimacaoEtapa = ref(3);
+    const ativaAnimacaoEtapa = ref(0);
 
-    // function ativarAnimacao() {
-    //     let loopEtapas = null;
-    //     setTimeout(() => {
-    //         loopEtapas = setInterval(() => {
-    //             ativaAnimacaoEtapa.value++;
-    //             if (ativaAnimacaoEtapa.value > 4) {
-    //                 ativaAnimacaoEtapa.value = 1;
-    //             }
-    //         }, 6500);
-    //     }, 1000);
-    // }
+    const cidadePercurso = ref(null)
+    const droneEntrega = ref(null)
+    const animacaoDrone = ref('')
 
-    // defineExpose({ ativarAnimacao });
+    let observerResizeImgCidade = null;
+
+    function setaTrajetoDroneEntrega() {
+        const larguraImagem = cidadePercurso.value?.offsetWidth ?? 0;
+        const larguraDrone = droneEntrega.value?.offsetWidth ?? 0;
+
+        const deslocamento = larguraImagem - larguraDrone - (larguraImagem * 0.20);
+
+        droneEntrega.value?.style.setProperty('--distanciaX', `${deslocamento}px`);
+
+        animacaoDrone.value = 'saidaDrone 3s ease-in forwards, trajetoriaDrone 5s linear 3.1s forwards';
+    }
+
+    onBeforeUnmount(() => {
+        if (observerResizeImgCidade && cidadePercurso.value) {
+            observerResizeImgCidade.unobserve(cidadePercurso.value);
+            observerResizeImgCidade.disconnect();
+        }
+    })    
+
+    function ativarAnimacao() {
+        setaTrajetoDroneEntrega();
+        observerResizeImgCidade = new ResizeObserver(() => {
+            setaTrajetoDroneEntrega();
+        })
+        observerResizeImgCidade.observe(cidadePercurso.value);
+
+        let loopEtapas = null;
+        loopEtapas = setInterval(() => {
+            ativaAnimacaoEtapa.value++;
+            if (ativaAnimacaoEtapa.value > 4) {
+                ativaAnimacaoEtapa.value = 1;
+            }
+        }, 8000);
+    }
+
+    defineExpose({ ativarAnimacao });
 </script>
 
 <style lang="scss" scope>
@@ -150,10 +179,6 @@
     #backgroundEtapa2.etapa-ativa,#preparoDrone.etapa-ativa{
         animation: fadeIn 0.5s ease-in-out forwards;
     }
-
-    #droneEntrega.etapa-ativa{
-        animation: trajetoriaDrone 5.3s ease-in-out 0.5s infinite;
-    }
     
     .etapa-entrega.etapa-ativa .rounded-full::before{
         content: '';
@@ -169,7 +194,7 @@
     }
 
     #smartphonePercurso.fade-out,#notificacaoPercurso.fade-out,#backgroundEtapa2.fade-out,#preparoDrone.fade-out,
-    #zoomSmartphonePercurso.fade-out,#droneEntrega.fade-out{
+    #zoomSmartphonePercurso.fade-out{
         animation: fadeOut 0.5s ease-in-out forwards;
     }
     
@@ -324,14 +349,42 @@
         }
     }
 
-    @keyframes trajetoriaDrone {
+    @keyframes saidaDrone {
         0% {
             opacity: 1;
-            transform: translateX(0) translateY(0);
+            transform: scale(0);
+            transform-origin: 50% 200%;
         }
+
         100% {
             opacity: 1;
-            transform: translateX(950%) translateY(0);
+            transform: scale(1);
+            transform-origin: 50% 100%;
+        }
+    }
+
+    @keyframes trajetoriaDrone {
+        0% {
+            rotate: 0deg;
+            transform: translateX(0);
+        }
+        50% {
+            rotate: -10deg;
+        }
+        60% {
+            rotate: -9deg;
+        }
+        95% {
+            opacity: 1;
+            scale:1;
+        }
+        99% {
+            scale:0;
+        }
+        100% {
+            opacity: 0;
+            rotate: 0deg;
+            transform: translateX(var(--distanciaX));
         }
     }
 
