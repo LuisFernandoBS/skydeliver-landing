@@ -81,21 +81,21 @@
 <script setup>
     import { ref } from 'vue';
 
-    const ativaAnimacaoEtapa = ref(0);
+    const ativaAnimacaoEtapa = ref(3);
 
-    function ativarAnimacao() {
-        let loopEtapas = null;
-        setTimeout(() => {
-            loopEtapas = setInterval(() => {
-                ativaAnimacaoEtapa.value++;
-                if (ativaAnimacaoEtapa.value > 4) {
-                    ativaAnimacaoEtapa.value = 1;
-                }
-            }, 6500);
-        }, 1000);
-    }
+    // function ativarAnimacao() {
+    //     let loopEtapas = null;
+    //     setTimeout(() => {
+    //         loopEtapas = setInterval(() => {
+    //             ativaAnimacaoEtapa.value++;
+    //             if (ativaAnimacaoEtapa.value > 4) {
+    //                 ativaAnimacaoEtapa.value = 1;
+    //             }
+    //         }, 6500);
+    //     }, 1000);
+    // }
 
-    defineExpose({ ativarAnimacao });
+    // defineExpose({ ativarAnimacao });
 </script>
 
 <style lang="scss" scope>
@@ -152,7 +152,7 @@
     }
 
     #droneEntrega.etapa-ativa{
-        animation: fadeInScale 1.4s ease-in-out 0.5s forwards;
+        animation: trajetoriaDrone 5.3s ease-in-out 0.5s infinite;
     }
     
     .etapa-entrega.etapa-ativa .rounded-full::before{
@@ -168,7 +168,8 @@
         z-index: -1;
     }
 
-    #smartphonePercurso.fade-out,#notificacaoPercurso.fade-out,#backgroundEtapa2.fade-out,#preparoDrone.fade-out,#zoomSmartphonePercurso.fade-out{
+    #smartphonePercurso.fade-out,#notificacaoPercurso.fade-out,#backgroundEtapa2.fade-out,#preparoDrone.fade-out,
+    #zoomSmartphonePercurso.fade-out,#droneEntrega.fade-out{
         animation: fadeOut 0.5s ease-in-out forwards;
     }
     
@@ -320,6 +321,17 @@
         }
         100% {
             box-shadow: 0 0 0 0 var(--color-primaria);
+        }
+    }
+
+    @keyframes trajetoriaDrone {
+        0% {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(950%) translateY(0);
         }
     }
 
