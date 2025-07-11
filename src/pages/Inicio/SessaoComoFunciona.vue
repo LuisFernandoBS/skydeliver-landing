@@ -65,8 +65,12 @@
                     src="@/assets/images/drone-preparo.png" alt="preparo drone">
                 </div>
                 <img id="zoomSmartphonePercurso" class="w-[165px] h-[165px] object-contain object-center absolute z-4 top-[26%] left-[1.5%]" 
-                :class="{'etapa-ativa': ativaAnimacaoEtapa === 1 || ativaAnimacaoEtapa === 2}"
+                :class="{'etapa-ativa': ativaAnimacaoEtapa === 1 || ativaAnimacaoEtapa === 2,'fade-out': ativaAnimacaoEtapa - 1 === 3}"
                 src="@/assets/images/zoom.png" alt="smartphone zoom">
+                <!-- Etapa 3 -->
+                <img id="droneEntrega" class="w-[64px] h-[64px] object-cover object-center absolute z-2 top-[26%] left-[5.5%]"
+                :class="{'etapa-ativa': ativaAnimacaoEtapa === 3,'fade-out': ativaAnimacaoEtapa - 1 === 3}"
+                src="@/assets/images/drone-etapa-2.png" alt="drone entrega">
                 <!-- Cidade -->
                 <img id="cidadePercurso" class="w-[95%] h-[95%] mx-[2.5%] object-contain object-center rounded-lg md:mt-0 mt-12" 
                 src="@/assets/images/cidade-percurso.png" alt="cidade percurso">
@@ -104,34 +108,11 @@
         opacity: 0;
     }
     
-    .descricao-etapa{
+    .descricao-etapa, #cidadePercurso, #smartphonePercurso, #notificacaoPercurso,
+    #zoomSmartphonePercurso, #backgroundEtapa2, #preparoDrone, #droneEntrega{
         opacity: 0;
     }
     
-    #cidadePercurso{
-        opacity: 0;
-    }
-
-    #smartphonePercurso{
-        opacity: 0;
-    }
-
-    #notificacaoPercurso{
-        opacity: 0;
-    }
-    
-    #zoomSmartphonePercurso{
-        opacity: 0;
-    }
-
-    #backgroundEtapa2{
-        opacity: 0;
-    }
-
-    #preparoDrone{
-        opacity: 0;
-    }
-
     .sessao-ativa{
         .etapa-entrega .pointer-events-none{
             animation: expandindoParaBaixo 0.6s ease-out forwards;
@@ -169,6 +150,10 @@
     #backgroundEtapa2.etapa-ativa,#preparoDrone.etapa-ativa{
         animation: fadeIn 0.5s ease-in-out forwards;
     }
+
+    #droneEntrega.etapa-ativa{
+        animation: fadeInScale 1.4s ease-in-out 0.5s forwards;
+    }
     
     .etapa-entrega.etapa-ativa .rounded-full::before{
         content: '';
@@ -183,7 +168,7 @@
         z-index: -1;
     }
 
-    #smartphonePercurso.fade-out,#notificacaoPercurso.fade-out,#backgroundEtapa2.fade-out,#preparoDrone.fade-out{
+    #smartphonePercurso.fade-out,#notificacaoPercurso.fade-out,#backgroundEtapa2.fade-out,#preparoDrone.fade-out,#zoomSmartphonePercurso.fade-out{
         animation: fadeOut 0.5s ease-in-out forwards;
     }
     
