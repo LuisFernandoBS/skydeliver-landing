@@ -1,16 +1,16 @@
 <template>
   <div class="min-h-screen flex flex-col bg-fundo bg-gradient-to-b from-fundo to-fundo-2 transition-colors delay-50 duration-400 ease-in-out">
 
-    <header class="grid grid-cols-1 md:grid-cols-10 w-full fixed z-10 bg-fundo/50 dark:bg-transparent">
+    <header class="grid grid-cols-1 md:grid-cols-10 w-full md:fixed z-10 bg-fundo/50 dark:bg-transparent">
         <div class="div-drone-menu fixed md:left-5 2xl:left-40">
           <img src="../assets/images/drone-menu.png" alt="drone menu" class="w-16 h-16 md:w-22 md:h-22 drone-menu"/>
         </div>
-        <div class="div-nav col-span-1 col-start-1 md:col-span-8 2xl:col-span-6 md:col-start-2 2xl:col-start-3">
+        <div class="div-nav col-span-1 col-start-1 md:col-span-8 md:col-start-2 2xl:col-span-6 2xl:col-start-3">
             <nav class="grid grid-cols-1 md:grid-cols-4 2xl:grid-cols-6 items-center md:gap-2 2xl:gap-4 py-7">
-                <div class="col-span-1 col-start-1 anim-col delay-1">
+                <div class="col-span-1 col-start-1 anim-col delay-1 pl-3">
                     <h1 class="text-2xl font-montserrat-bold text-primaria text-shadow-xs text-shadow-texto"><span class="text-acento">Sky</span>Delivery</h1>
                 </div>
-                <div class="col-span-1 col-start-1 anim-col md:col-start-2 2xl:col-start-4 text-center delay-2">
+                <div class="col-span-1 anim-col md:col-start-2 2xl:col-start-4 text-center delay-2">
                     <a class="cursor-pointer md:text-md xl:text-xl font-montserrat text-texto hover:font-montserrat-bold underline-offset-8" :class="{'underline':menuAtivo === 'inicio'}" @click="selecionarMenu('inicio')">Início</a>
                 </div>
                 <div class="col-span-1 text-center anim-col delay-3">
@@ -21,7 +21,7 @@
                 </div>
             </nav>
         </div>
-        <BotaoDarkMode class="fixed right-8 pt-12 w-[40px] h-[40px]"/>
+        <BotaoDarkMode class="fixed right-4 top-11/12 md:top-0 md:right-8 md: md:pt-12 w-[40px] h-[40px]"/>
     </header>
 
     <main class="flex-1 bg-transparent">
