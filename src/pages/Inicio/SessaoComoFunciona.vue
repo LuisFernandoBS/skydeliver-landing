@@ -72,6 +72,10 @@
                 :class="{'etapa-ativa': ativaAnimacaoEtapa === 3}"
                 :style="{ animation: ativaAnimacaoEtapa === 3 ? animacaoDrone: 'none' }"
                 src="@/assets/images/drone-etapa-2.png" alt="drone entrega">
+                <!-- Etapa 4 -->
+                <img id="fogos" class="w-[64px] h-[64px] object-cover object-center absolute z-2 top-[26%] right-[18%] lg:top-[29%]"
+                :class="{'etapa-ativa': ativaAnimacaoEtapa === 4 ,'fade-out': ativaAnimacaoEtapa - 1 === 4}"
+                src="@/assets/images/fogos.png" alt="fogos">
                 <!-- Cidade -->
                 <img ref="cidadePercurso" id="cidadePercurso" class="w-[95%] h-[95%] mx-[2.5%] object-contain object-center rounded-lg md:mt-0 mt-12" 
                 src="@/assets/images/cidade-percurso.png" alt="cidade percurso">
@@ -115,8 +119,7 @@
         })
         observerResizeImgCidade.observe(cidadePercurso.value);
 
-        let loopEtapas = null;
-        loopEtapas = setInterval(() => {
+        setInterval(() => {
             ativaAnimacaoEtapa.value++;
             if (ativaAnimacaoEtapa.value > 4) {
                 ativaAnimacaoEtapa.value = 1;
@@ -138,7 +141,7 @@
     }
     
     .descricao-etapa, #cidadePercurso, #smartphonePercurso, #notificacaoPercurso,
-    #zoomSmartphonePercurso, #backgroundEtapa2, #preparoDrone, #droneEntrega{
+    #zoomSmartphonePercurso, #backgroundEtapa2, #preparoDrone, #droneEntrega, #fogos{
         opacity: 0;
     }
     
@@ -172,6 +175,10 @@
         animation: expandindoParaCima 0.5s ease-out 1.9s forwards, shakeLeft 4s ease 2.4s infinite;
     }
 
+    #fogos.etapa-ativa{
+        animation: expandindoParaCima 0.5s ease-out 0.5s forwards;
+    }
+
     #backgroundEtapa2.etapa-ativa{
         animation: fadeIn 0.5s ease-in-out forwards;
     }
@@ -194,7 +201,7 @@
     }
 
     #smartphonePercurso.fade-out,#notificacaoPercurso.fade-out,#backgroundEtapa2.fade-out,#preparoDrone.fade-out,
-    #zoomSmartphonePercurso.fade-out{
+    #zoomSmartphonePercurso.fade-out,#fogos.fade-out{
         animation: fadeOut 0.5s ease-in-out forwards;
     }
     
