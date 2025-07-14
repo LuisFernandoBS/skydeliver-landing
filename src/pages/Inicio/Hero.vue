@@ -1,11 +1,19 @@
  <template>
     <div>
-        <div class="flex flex-col justify-start items-center w-[46vw] h-[50%] mt-50 p-8 pl-18 div-hero-inicio">
+        <div class="blob relative md:absolute">
+            <img src="@/assets/images/cloud-3.png" alt="cloud 3" class="imagem-cloud">
+            <img src="@/assets/images/cloud-2.png" alt="cloud 2" class="imagem-cloud">
+            <img src="@/assets/images/cloud-1.png" alt="cloud 1" class="imagem-cloud">
+            <img src="@/assets/images/cloud-2.png" alt="cloud 2" class="imagem-cloud">
+            <img src="@/assets/images/city.jpg" alt="city" class="imagem-blob">
+        </div>
+        <img src="@/assets/images/drone-blob.png" alt="drone-blob" class="drone-blob absolute">
+        <div class="flex flex-col justify-start items-center w-[46vw] h-[50%] mt-50 md:p-8 md:pl-18 div-hero-inicio">
             <h1 class="text-4xl lg:text-6xl text-center font-bold text-texto mb-4 font-opensans-bold text-shadow-xs text-shadow-texto">
                 Entregas aéreas mais rápidas e inteligentes
             </h1>
-            <p class="text-lg md:text-2xl text-texto mb-2 font-montserrat text-shadow-xs text-shadow-texto">Com a <span class="text-acento">Sky</span>Delivery, sua encomenda chega voando até você.</p>
-            <p class="text-[14px] text-texto mb-8 px-10 font-montserrat-light">Tecnologia com drones autônomos para entregas mais seguras, ecológicas e rápidas.</p>
+            <p class="text-lg md:text-2xl text-center md:text-start text-texto mb-2 font-montserrat text-shadow-xs text-shadow-texto">Com a <span class="text-acento">Sky</span>Delivery, sua encomenda chega voando até você.</p>
+            <p class="text-[14px] text-texto text-center md:text-start mb-8 px-10 font-montserrat-light">Tecnologia com drones autônomos para entregas mais seguras, ecológicas e rápidas.</p>
             <a
             class="group relative inline-flex items-center overflow-hidden rounded-sm bg-primaria px-8 py-3 text-texto focus:ring-3 focus:outline-hidden"
             href="#"
@@ -30,14 +38,6 @@
                 <span class="text-sm font-medium transition-all font-montserrat-bold group-hover:me-4"> Comece agora </span>
             </a>
         </div>
-        <div class="blob relative md:absolute">
-            <img src="@/assets/images/cloud-3.png" alt="cloud 3" class="imagem-cloud">
-            <img src="@/assets/images/cloud-2.png" alt="cloud 2" class="imagem-cloud">
-            <img src="@/assets/images/cloud-1.png" alt="cloud 1" class="imagem-cloud">
-            <img src="@/assets/images/cloud-2.png" alt="cloud 2" class="imagem-cloud">
-            <img src="@/assets/images/city.jpg" alt="city" class="imagem-blob">
-        </div>
-        <img src="@/assets/images/drone-blob.png" alt="drone-blob" class="drone-blob relative md:absolute">
     </div>
  </template>
  <script>
@@ -46,7 +46,7 @@
  }
  </script>
  <style scoped>
-        .blob {
+    .blob {
         width: 46vw;
         height: 45vw;
         background: linear-gradient(135deg, var(--color-primaria),var(--color-destaque));
@@ -122,6 +122,26 @@
 
     .div-hero-inicio{
         animation: fadeInLeftDefault 700ms ease-in forwards;
+    }
+
+    @media (max-width: 768px) {
+        .div-hero-inicio {
+            width: 100%;
+            height: 60vh;
+            margin-top: 10vh;
+        }
+        .blob {
+            width: 100%;
+            height: 90vw;
+            margin-left: 5vw;
+        }
+        .drone-blob {
+            position: absolute;
+            width: 90%;
+            height: 90vw;
+            top: 125px;
+            left: 22vw;
+        }
     }
 
     @keyframes BrilhandoImagem {

@@ -32,4 +32,11 @@
 
 <style scoped>
 
+    @media (max-width: 768px) {
+        section {
+            padding-left: 5vh;
+            padding-right: 5vh;
+        }
+    }
+
 </style>
