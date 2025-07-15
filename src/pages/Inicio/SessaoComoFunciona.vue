@@ -1,7 +1,7 @@
 <template>
-    <div class="px-20 py-24 mx-28 flex flex-wrap">
-        <div class="flex flex-wrap w-full">
-            <div class="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6 animate-[entradaEsquerda_1.5s_ease-out_forwards]">
+    <div class=" md:px-20 py-24 md:mx-28 flex flex-wrap">
+        <div class="flex flex-wrap w-[80vw]">
+            <div class="w-screen md:w-1/2 lg:w-2/5 pr-0 py-0 md:pr-10 md:py-6 animate-[entradaEsquerda_1.5s_ease-out_forwards]">
                 <h2 class="text-4xl text-center font-opensans-bold text-texto mb-12">Como funciona a entrega pela SkyDelivery?</h2>
                 <div class="flex relative pb-24 etapa-entrega" :class="{'etapa-ativa': ativaAnimacaoEtapa === 1}">
                     <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div class="lg:w-3/5 md:w-1/2 md:mt-0 mt-12 relative">
+            <div class="w-screen md:w-1/2 lg:w-3/5  mt-0 md:mt-0 relative">
                 <!-- Etapa 1 -->
                 <img id="notificacaoPercurso" 
                 class="w-[32px] h-[32px] object-cover object-center absolute z-3 top-[28.5%] left-[10.5%]"
