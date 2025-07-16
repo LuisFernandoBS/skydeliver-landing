@@ -86,7 +86,7 @@
 <script setup>
     import { ref, onBeforeUnmount } from 'vue';
 
-    const ativaAnimacaoEtapa = ref(4);
+    const ativaAnimacaoEtapa = ref(0);
 
     const cidadePercurso = ref(null)
     const droneEntrega = ref(null)
@@ -114,17 +114,17 @@
 
     function ativarAnimacao() {
         setaTrajetoDroneEntrega();
-        // observerResizeImgCidade = new ResizeObserver(() => {
-        //     setaTrajetoDroneEntrega();
-        // })
-        // observerResizeImgCidade.observe(cidadePercurso.value);
+        observerResizeImgCidade = new ResizeObserver(() => {
+            setaTrajetoDroneEntrega();
+        })
+        observerResizeImgCidade.observe(cidadePercurso.value);
 
-        // setInterval(() => {
-        //     ativaAnimacaoEtapa.value++;
-        //     if (ativaAnimacaoEtapa.value > 4) {
-        //         ativaAnimacaoEtapa.value = 1;
-        //     }
-        // }, 8000);
+        setInterval(() => {
+            ativaAnimacaoEtapa.value++;
+            if (ativaAnimacaoEtapa.value > 4) {
+                ativaAnimacaoEtapa.value = 1;
+            }
+        }, 8000);
     }
 
     defineExpose({ ativarAnimacao });
