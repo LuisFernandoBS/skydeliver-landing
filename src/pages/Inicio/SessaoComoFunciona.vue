@@ -52,28 +52,28 @@
             <div class="w-screen md:w-1/2 lg:w-3/5  mt-0 md:mt-0 relative">
                 <!-- Etapa 1 -->
                 <img id="notificacaoPercurso" 
-                class="w-[32px] h-[32px] object-cover object-center absolute z-3 top-[28.5%] left-[10.5%]"
+                class="w-[20px] h-[20px] md:w-[32px] md:h-[32px] object-cover object-center absolute z-3 left-[12.5%] top-[32.5%] md:top-[28.5%] md:left-[10.5%]"
                 :class="{'etapa-ativa': ativaAnimacaoEtapa === 1, 'fade-out': ativaAnimacaoEtapa - 1 === 1}" 
                 src="@/assets/images/push-notification.png" alt="push notification">
-                <img id="smartphonePercurso" class="w-[64px] h-[64px] object-cover object-center absolute z-2 top-[29%] left-[6.5%]"
+                <img id="smartphonePercurso" class="w-[35px] h-[35px] md:w-[64px] md:h-[64px] object-cover object-center absolute z-2 top-[36%] md:top-[29%] left-[6.5%]"
                 :class="{'etapa-ativa': ativaAnimacaoEtapa === 1, 'fade-out': ativaAnimacaoEtapa - 1 === 1}"
                 src="@/assets/images/smartphone.png" alt="smartphone">
                 <!-- Etapa 2 -->
-                <div id="backgroundEtapa2" class="rounded-full w-[92px] h-[95px] top-[26%] left-[5.5%] absolute bg-gray-500 flex justify-center items-center" :class="{'etapa-ativa': ativaAnimacaoEtapa === 2, 'fade-out': ativaAnimacaoEtapa - 1 === 2}">
-                    <img id="preparoDrone" class="w-[64px] h-[64px] object-cover object-center z-2"
+                <div id="backgroundEtapa2" class="rounded-full w-[60px] h-[60px] left-[3.5%] top-[29%] md:w-[92px] md:h-[95px] md:top-[26%] md:left-[5.5%] absolute bg-gray-500 flex justify-center items-center" :class="{'etapa-ativa': ativaAnimacaoEtapa === 2, 'fade-out': ativaAnimacaoEtapa - 1 === 2}">
+                    <img id="preparoDrone" class="w-[45px] h-[45px] object-cover object-center z-2"
                     :class="{'etapa-ativa': ativaAnimacaoEtapa === 2, 'fade-out': ativaAnimacaoEtapa - 1 === 2}"
                     src="@/assets/images/drone-preparo.png" alt="preparo drone">
                 </div>
-                <img id="zoomSmartphonePercurso" class="w-[165px] h-[165px] object-contain object-center absolute z-4 top-[26%] left-[1.5%]" 
+                <img id="zoomSmartphonePercurso" class="w-[105px] h-[105px] md:w-[165px] md:h-[165px] object-contain object-center absolute z-4 top-[29%] left-[-3.5%] md:top-[26%] md:left-[1.5%]" 
                 :class="{'etapa-ativa': ativaAnimacaoEtapa === 1 || ativaAnimacaoEtapa === 2,'fade-out': ativaAnimacaoEtapa - 1 === 2}"
                 src="@/assets/images/zoom.png" alt="smartphone zoom">
                 <!-- Etapa 3 -->
-                <img ref="droneEntrega" id="droneEntrega" class="w-[64px] h-[64px] object-cover object-center absolute z-2 top-[30%] left-[9%] lg:top-[35%]"
+                <img ref="droneEntrega" id="droneEntrega" class="w-[45px] h-[45px] md:w-[64px] md:h-[64px] object-cover object-center absolute z-2 top-[45%] md:top-[30%] left-[9%] lg:top-[35%]"
                 :class="{'etapa-ativa': ativaAnimacaoEtapa === 3}"
                 :style="{ animation: ativaAnimacaoEtapa === 3 ? animacaoDrone: 'none' }"
                 src="@/assets/images/drone-etapa-2.png" alt="drone entrega">
                 <!-- Etapa 4 -->
-                <img id="fogos" class="w-[64px] h-[64px] object-cover object-center absolute z-2 top-[26%] right-[18%] lg:top-[29%]"
+                <img id="fogos" class="w-[50px] h-[50px] md:w-[64px] md:h-[64px] object-cover object-center absolute z-2 top-[38%] right-[14%] md:top-[26%] md:right-[18%] lg:top-[29%]"
                 :class="{'etapa-ativa': ativaAnimacaoEtapa === 4 ,'fade-out': ativaAnimacaoEtapa - 1 === 4}"
                 src="@/assets/images/fogos.png" alt="fogos">
                 <!-- Cidade -->
@@ -86,7 +86,7 @@
 <script setup>
     import { ref, onBeforeUnmount } from 'vue';
 
-    const ativaAnimacaoEtapa = ref(0);
+    const ativaAnimacaoEtapa = ref(4);
 
     const cidadePercurso = ref(null)
     const droneEntrega = ref(null)
@@ -114,17 +114,17 @@
 
     function ativarAnimacao() {
         setaTrajetoDroneEntrega();
-        observerResizeImgCidade = new ResizeObserver(() => {
-            setaTrajetoDroneEntrega();
-        })
-        observerResizeImgCidade.observe(cidadePercurso.value);
+        // observerResizeImgCidade = new ResizeObserver(() => {
+        //     setaTrajetoDroneEntrega();
+        // })
+        // observerResizeImgCidade.observe(cidadePercurso.value);
 
-        setInterval(() => {
-            ativaAnimacaoEtapa.value++;
-            if (ativaAnimacaoEtapa.value > 4) {
-                ativaAnimacaoEtapa.value = 1;
-            }
-        }, 8000);
+        // setInterval(() => {
+        //     ativaAnimacaoEtapa.value++;
+        //     if (ativaAnimacaoEtapa.value > 4) {
+        //         ativaAnimacaoEtapa.value = 1;
+        //     }
+        // }, 8000);
     }
 
     defineExpose({ ativarAnimacao });
