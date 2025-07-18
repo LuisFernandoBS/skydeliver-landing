@@ -1,6 +1,6 @@
  <template>
     <div>
-        <div class="blob relative md:absolute">
+        <div class="blob relative lg:absolute">
             <img src="@/assets/images/cloud-3.png" alt="cloud 3" class="imagem-cloud">
             <img src="@/assets/images/cloud-2.png" alt="cloud 2" class="imagem-cloud">
             <img src="@/assets/images/cloud-1.png" alt="cloud 1" class="imagem-cloud">
@@ -124,7 +124,7 @@
         animation: fadeInLeftDefault 700ms ease-in forwards;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         .div-hero-inicio {
             width: 100%;
             height: 60vh;
@@ -140,6 +140,27 @@
             width: 90%;
             height: 90vw;
             top: 125px;
+            left: 22vw;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 834px) {
+        .div-hero-inicio {
+            width: 100%;
+            height: 60vh;
+            margin-top: 10vh;
+        }
+        .blob {
+            margin-top: 13vh;
+            width: 100%;
+            height: 90vw;
+            margin-left: 3vw;   
+        }
+        .drone-blob {
+            position: absolute;
+            width: 90%;
+            height: 90vw;
+            top: 100px;
             left: 22vw;
         }
     }
