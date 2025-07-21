@@ -2,7 +2,7 @@
     <section class="lg:h-screen flex">
         <Hero />
     </section>
-    <section id="sessaoComoFunciona" class="flex lg:h-screen justify-center" v-scroll-anim="{ onEnter: carregaAtivarAnimacao }">
+    <section id="sessaoComoFunciona" class="flex xl:h-screen justify-center" v-scroll-anim="{ onEnter: carregaAtivarAnimacao }">
         <SessaoComoFunciona ref="refSessao"/>
     </section>
 </template>
