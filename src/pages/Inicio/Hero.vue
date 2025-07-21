@@ -8,12 +8,12 @@
             <img src="@/assets/images/city.jpg" alt="city" class="imagem-blob">
         </div>
         <img src="@/assets/images/drone-blob.png" alt="drone-blob" class="drone-blob absolute">
-        <div class="flex flex-col justify-start items-center w-[46vw] h-[50%] mt-50 md:p-8 md:pl-18 div-hero-inicio">
+        <div class="flex flex-col justify-start items-center w-[46vw] h-[50%] mt-50 lg:p-8 lg:pl-18 div-hero-inicio">
             <h1 class="text-4xl lg:text-6xl text-center font-bold text-texto mb-4 font-opensans-bold text-shadow-xs text-shadow-texto">
                 Entregas aéreas mais rápidas e inteligentes
             </h1>
-            <p class="text-lg md:text-2xl text-center md:text-start text-texto mb-2 font-montserrat text-shadow-xs text-shadow-texto">Com a <span class="text-acento">Sky</span>Delivery, sua encomenda chega voando até você.</p>
-            <p class="text-[14px] text-texto text-center md:text-start mb-8 px-10 font-montserrat-light">Tecnologia com drones autônomos para entregas mais seguras, ecológicas e rápidas.</p>
+            <p class="text-lg md:text-2xl text-center lg:text-start text-texto mb-2 font-montserrat text-shadow-xs text-shadow-texto">Com a <span class="text-acento">Sky</span>Delivery, sua encomenda chega voando até você.</p>
+            <p class="text-[14px] text-texto text-center lg:text-start mb-8 px-10 font-montserrat-light">Tecnologia com drones autônomos para entregas mais seguras, ecológicas e rápidas.</p>
             <a
             class="group relative inline-flex items-center overflow-hidden rounded-sm bg-primaria px-8 py-3 text-texto focus:ring-3 focus:outline-hidden"
             href="#"
@@ -138,7 +138,7 @@
         .drone-blob {
             position: absolute;
             width: 90%;
-            height: 90vw;
+            height: 90vh;
             top: 125px;
             left: 22vw;
         }
@@ -147,20 +147,20 @@
     @media (min-width: 768px) and (max-width: 834px) {
         .div-hero-inicio {
             width: 100%;
-            height: 60vh;
+            height: 30vh;
             margin-top: 10vh;
         }
         .blob {
-            margin-top: 13vh;
+            margin-top: 8vh;
             width: 100%;
-            height: 90vw;
+            height: 60vh;
             margin-left: 3vw;   
         }
         .drone-blob {
             position: absolute;
             width: 90%;
-            height: 90vw;
-            top: 100px;
+            height: 70vh;
+            top: 60px;
             left: 22vw;
         }
     }
