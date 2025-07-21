@@ -1,8 +1,8 @@
 <template>
-    <section class="h-screen flex">
+    <section class="lg:h-screen flex">
         <Hero />
     </section>
-    <section id="sessaoComoFunciona" class="flex md:h-screen" v-scroll-anim="{ onEnter: carregaAtivarAnimacao }">
+    <section id="sessaoComoFunciona" class="flex lg:h-screen justify-center" v-scroll-anim="{ onEnter: carregaAtivarAnimacao }">
         <SessaoComoFunciona ref="refSessao"/>
     </section>
 </template>
@@ -32,7 +32,7 @@
 
 <style scoped>
 
-    @media (max-width: 768px) {
+    @media (max-width: 834px) {
         section {
             padding-left: 5vh;
             padding-right: 5vh;
