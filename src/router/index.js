@@ -4,7 +4,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
 const InicioPage = () => import('@/pages/InicioPage.vue');
 // const SobrePage = () => import('@/pages/SobrePage.vue');
-// const ContatoPage = () => import('@/pages/ContatoPage.vue');
+const ContatoPage = () => import('@/pages/ContatoPage.vue');
 
 const routes = [
     {
@@ -12,7 +12,7 @@ const routes = [
         component: DefaultLayout,
         children: [
             { path: '', component: InicioPage },
-            // { path: 'planos', component: PlanosPage }
+            { path: 'contato', component: ContatoPage }
         ]
     }
 ]
