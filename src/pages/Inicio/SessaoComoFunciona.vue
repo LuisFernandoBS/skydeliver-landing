@@ -1,6 +1,6 @@
 <template>
-    <div class="flex flex-wrap x2l:px-20 py-24 lg:py-0 x2l:py-24 x2l:mx-28">
-        <div class="flex flex-wrap w-[80vw] xl:w-[85vw] x2l:w-[80vw]">
+    <div class="flex flex-wrap 2xl:px-20 py-24 lg:py-0 2xl:py-24 2xl:mx-28">
+        <div class="flex flex-wrap w-[80vw] xl:w-[85vw] 2xl:w-[80vw]">
             <div class="w-screen lg:w-1/2 xl:w-2/5 pr-0 py-0 lg:pr-10 lg:py-6 animate-[entradaEsquerda_1.5s_ease-out_forwards]">
                 <h2 class="text-4xl text-center font-opensans-bold text-texto mb-12">Como funciona a entrega pela SkyDelivery?</h2>
                 <div class="flex relative pb-24 etapa-entrega" :class="{'etapa-ativa': ativaAnimacaoEtapa === 1}">
@@ -52,19 +52,19 @@
             <div class="w-screen lg:w-1/2 xl:w-3/5  mt-0 md:mt-0 relative">
                 <!-- Etapa 1 -->
                 <img id="notificacaoPercurso" 
-                class="w-[20px] h-[20px] md:w-[32px] md:h-[32px] object-cover object-center absolute z-3 left-[12.5%] top-[32.5%] md:top-[18.5%] md:left-[14.5%] lg:top-[28.5%] lg:left-[14%] x2l:top-[28.5%] x2l:left-[10.5%]"
+                class="w-[20px] h-[20px] md:w-[32px] md:h-[32px] object-cover object-center absolute z-3 left-[12.5%] top-[32.5%] md:top-[18.5%] md:left-[14.5%] lg:top-[28.5%] lg:left-[14%] 2xl:top-[28.5%] 2xl:left-[10.2%]"
                 :class="{'etapa-ativa': ativaAnimacaoEtapa === 1, 'fade-out': ativaAnimacaoEtapa - 1 === 1}" 
                 src="@/assets/images/push-notification.png" alt="push notification">
-                <img id="smartphonePercurso" class="w-[35px] h-[35px] md:w-[64px] md:h-[64px] object-cover object-center absolute z-2 top-[36%] md:top-[19%] lg:top-[29%] left-[6.5%] md:left-[9%] lg:left-[8.5%] x2l:left-[6.5%]"
+                <img id="smartphonePercurso" class="w-[35px] h-[35px] md:w-[64px] md:h-[64px] object-cover object-center absolute z-2 top-[36%] md:top-[19%] lg:top-[29%] left-[6.5%] md:left-[9%] lg:left-[8.5%] 2xl:left-[6.3%]"
                 :class="{'etapa-ativa': ativaAnimacaoEtapa === 1, 'fade-out': ativaAnimacaoEtapa - 1 === 1}"
                 src="@/assets/images/smartphone.png" alt="smartphone">
                 <!-- Etapa 2 -->
-                <div id="backgroundEtapa2" class="rounded-full w-[60px] h-[60px] left-[3.5%] top-[29%] md:w-[92px] md:h-[95px] md:top-[15%] md:left-[7.5%] lg:top-[27%] lg:left-[7.1%] x2l:top-[28%] x2l:left-[6.5%] absolute bg-gray-500 flex justify-center items-center" :class="{'etapa-ativa': ativaAnimacaoEtapa === 2, 'fade-out': ativaAnimacaoEtapa - 1 === 2}">
+                <div id="backgroundEtapa2" class="rounded-full w-[60px] h-[60px] left-[3.5%] top-[29%] md:w-[92px] md:h-[95px] md:top-[15%] md:left-[7.5%] lg:top-[27%] lg:left-[7.1%] 2xl:top-[26%] 2xl:left-[5.5%] absolute bg-gray-500 flex justify-center items-center" :class="{'etapa-ativa': ativaAnimacaoEtapa === 2, 'fade-out': ativaAnimacaoEtapa - 1 === 2}">
                     <img id="preparoDrone" class="w-[45px] h-[45px] object-cover object-center z-2"
                     :class="{'etapa-ativa': ativaAnimacaoEtapa === 2, 'fade-out': ativaAnimacaoEtapa - 1 === 2}"
                     src="@/assets/images/drone-preparo.png" alt="preparo drone">
                 </div>
-                <img id="zoomSmartphonePercurso" class="w-[105px] h-[105px] md:w-[165px] md:h-[165px] object-contain object-center absolute z-4 top-[29%] left-[-3.5%] md:top-[15%] md:left-[1.5%] lg:top-[27%] x2l:top-[26%]" 
+                <img id="zoomSmartphonePercurso" class="w-[105px] h-[105px] md:w-[165px] md:h-[165px] object-contain object-center absolute z-4 top-[29%] left-[-3.5%] md:top-[15%] md:left-[1.5%] lg:top-[27%] 2xl:top-[26%]" 
                 :class="{'etapa-ativa': ativaAnimacaoEtapa === 1 || ativaAnimacaoEtapa === 2,'fade-out': ativaAnimacaoEtapa - 1 === 2}"
                 src="@/assets/images/zoom.png" alt="smartphone zoom">
                 <!-- Etapa 3 -->
@@ -73,7 +73,7 @@
                 :style="{ animation: ativaAnimacaoEtapa === 3 ? animacaoDrone: 'none' }"
                 src="@/assets/images/drone-etapa-2.png" alt="drone entrega">
                 <!-- Etapa 4 -->
-                <img id="fogos" class="w-[50px] h-[50px] md:w-[64px] md:h-[64px] object-cover object-center absolute z-2 top-[38%] right-[14%] md:top-[26%] md:right-[18%] lg:right-[17%] lg:top-[33%] x2l:top-[29%] x2l:right-[18%]"
+                <img id="fogos" class="w-[50px] h-[50px] md:w-[64px] md:h-[64px] object-cover object-center absolute z-2 top-[38%] right-[14%] md:top-[26%] md:right-[18%] lg:right-[17%] lg:top-[33%] 2xl:top-[29.4%] 2xl:right-[19.3%]"
                 :class="{'etapa-ativa': ativaAnimacaoEtapa === 4 ,'fade-out': ativaAnimacaoEtapa - 1 === 4}"
                 src="@/assets/images/fogos.png" alt="fogos">
                 <!-- Cidade -->
