@@ -67,13 +67,21 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
+  import { ref } from 'vue';
   import BotaoDarkMode from '../components/BotaoDarkMode.vue';
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter();
 
   const menuAtivo = ref('inicio');
 
   function selecionarMenu(menuEscolhido) {
     menuAtivo.value = menuEscolhido;
+    if (menuEscolhido === 'inicio') {
+      router.push('/');
+      return;
+    }
+    this.router.push(`/${menuEscolhido}`);
   }
 
   function abrirMenuMobile() {
