@@ -67,13 +67,22 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue';
+  import { ref, onMounted } from 'vue';
   import BotaoDarkMode from '../components/BotaoDarkMode.vue';
   import { useRouter } from 'vue-router';
 
   const router = useRouter();
 
   const menuAtivo = ref('inicio');
+
+  onMounted(() => {
+    const path = router.currentRoute.value.path;
+    if (path === '/') {
+      menuAtivo.value = 'inicio';
+      return;
+    }     
+    menuAtivo.value = path.replace('/', '');
+  });
 
   function selecionarMenu(menuEscolhido) {
     menuAtivo.value = menuEscolhido;
