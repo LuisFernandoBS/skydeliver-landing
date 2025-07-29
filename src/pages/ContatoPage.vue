@@ -1,29 +1,29 @@
 <template>
-    <div class="grid grid-cols-3 gap-4 mt-[10vh] px-[20vw]">
+    <div class="grid grid-cols-3 gap-4 mt-0 md:mt-[10vh] px-[5vw] md:px-[10vw] xl:px-[20vw]">
         <Alerta v-if="msg" :msg="msg" :fechar="fecharAlerta" class="fixed top-20 left-1/2 -translate-x-1/2 z-20 w-fit mb-4 animate-[fadeIn_1s_ease-out_forwards]" />
-        <div class="col-span-3 text-center mb-8 animate-[fadeIn_200ms_ease-out_forwards]">
+        <div class="col-span-3 text-center mb-3 sm:mb-8 animate-[fadeIn_200ms_ease-out_forwards]">
             <h1 class="text-2xl text-texto text-shadow-texto font-opensans-bold mb-4">Contato</h1>
-            <p class="text-texto text-shadow-texto mb-6 font-montserrat">Entre em contato conosco para mais informações.</p>
+            <p class="text-texto text-shadow-texto mb-2 sm:mb-6 font-montserrat">Entre em contato conosco para mais informações.</p>
         </div>
-        <div class="col-span-1 flex flex-col items-center justify-center animate-[fadeIn_2s_ease-out_forwards]">
-            <img src="@/assets/images/telefone.png" alt="telefone" class="w-17 h-17 mb-4">
-            <h4 class="text-lg font-bold font-opensans text-texto">Telefone</h4>
-            <p class="text-texto text-shadow-texto font-montserrat">+55 11 1234-5678</p>
+        <div class="col-span-1 flex flex-col items-center justify-start animate-[fadeIn_2s_ease-out_forwards]">
+            <img src="@/assets/images/telefone.png" alt="telefone" class="w-12 h-12 md:w-17 md:h-17 mb-4">
+            <h4 class="font-bold font-opensans text-texto text-[13px] lg:text-lg">Telefone</h4>
+            <p class="text-texto text-shadow-texto font-montserrat text-[12px] lg:text-lg">+55 11 1234-5678</p>
         </div>
-        <div class="col-span-1 flex flex-col items-center justify-center animate-[fadeIn_2s_ease-out_forwards]">
-            <img src="@/assets/images/localizacao.png" alt="localização" class="w-17 h-17 mb-4">
-            <h4 class="text-lg font-bold font-opensans text-texto">Endereço</h4>
-            <p class="text-texto text-shadow-texto font-montserrat">Av. Oceânica, 456 - Barra, Salvador, BA</p>
+        <div class="col-span-1 flex flex-col items-center justify-start animate-[fadeIn_2s_ease-out_forwards]">
+            <img src="@/assets/images/localizacao.png" alt="localização" class="w-12 h-12 md:w-17 md:h-17 mb-4">
+            <h4 class="font-bold font-opensans text-texto text-[13px] lg:text-lg">Endereço</h4>
+            <p class="text-texto text-shadow-texto font-montserrat text-[12px] text-center lg:text-lg">Av. Oceânica, 456 - Barra, Salvador, BA</p>
         </div>
-        <div class="col-span-1 flex flex-col items-center justify-center animate-[fadeIn_2s_ease-out_forwards]">
-            <img src="@/assets/images/email.png" alt="email" class="w-17 h-17 mb-4">
-            <h4 class="text-lg font-bold font-opensans text-texto">Email</h4>
-            <p class="text-texto text-shadow-texto font-montserrat">contato@skyline.com</p>
+        <div class="col-span-1 flex flex-col items-center justify-start animate-[fadeIn_2s_ease-out_forwards]">
+            <img src="@/assets/images/email.png" alt="email" class="w-12 h-12 md:w-17 md:h-17 mb-4">
+            <h4 class="font-bold font-opensans text-texto text-[13px] lg:text-lg">Email</h4>
+            <p class="text-texto text-shadow-texto font-montserrat text-[12px] lg:text-lg">contato@skyline.com</p>
         </div>
-        <div class="col-span-3 mt-8 animate-[fadeIn_2s_ease-out_forwards]">
+        <div class="col-span-3 mt-8 animate-[fadeIn_2s_ease-out_forwards] mb-5">
             <div class="flex flex-wrap w-[100%] border border-secundaria rounded-2xl my-0 lg:my-6">
-                <div class="w-screen lg:w-[50%]">
-                    <img class="object-cover object-center border border-secundaria rounded-2xl h-full" src="@/assets/images/contato.jpg" alt="contato">
+                <div class="w-screen max-h-[350px] lg:w-[50%] lg:max-h-full">
+                    <img class="object-cover w-full object-center border border-secundaria rounded-2xl h-full" src="@/assets/images/contato.jpg" alt="contato">
                 </div>
                 <div class="w-screen lg:w-[50%] pr-0">
                     <h2 class="text-xl text-texto text-shadow-texto font-opensans-bold my-6 px-8">Formulário de Contato</h2>
@@ -45,11 +45,11 @@
         
                             <span class="absolute inset-y-0 start-3 -translate-y-4 mt-2 h-fit bg-fundo px-0.5 text-sm font-medium text-texto transition-transform peer-placeholder-shown:-translate-y-0 peer-focus:-translate-y-4"> Mensagem* </span>
                         </label>
-                        <div class="justify-between flex items-center">
+                        <div class="justify-between flex items-center pb-2">
                             <span class="text-texto font-montserrat text-[10px] w-[50%]">Campos com * é obrigatorio o preenchimento.</span>
                             <button
                             type="submit"
-                            class="group relative w-[25%] cursor-pointer inline-flex items-center overflow-hidden rounded-sm bg-primaria px-8 py-3 text-texto focus:outline-hidden"
+                            class="group relative w-fit cursor-pointer inline-flex items-center overflow-hidden rounded-sm bg-primaria px-8 py-3 text-texto focus:outline-hidden"
                             >
                                 <span class="absolute -end-full transition-all group-hover:end-4">
                                     <svg
@@ -58,7 +58,7 @@
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
-                                    >
+                                    >   
                                     <path
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
@@ -107,6 +107,7 @@
         })
         const dados = campos.map(campo => ({nome: campo.name, valor: campo.value}));
         console.log(dados);
+        document.querySelector('form').reset();
         exibirAlerta('Formulário enviado com sucesso!');
     }
 

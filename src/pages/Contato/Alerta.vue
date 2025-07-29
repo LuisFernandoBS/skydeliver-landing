@@ -17,12 +17,12 @@
       </svg>
   
       <div class="flex-1">
-        <strong class="font-medium text-texto font-montserrat"> {{ msg }} </strong>
+        <strong class="font-medium text-texto font-montserrat-bold"> {{ msg }} </strong>
 
       </div>
   
       <button
-        class="-m-3 cursor-pointer rounded-full p-1.5 text-gray-500 transition-colors hover:bg-gray-50 hover:text-gray-700"
+        class="-m-3 cursor-pointer rounded-full p-1.5 text-gray-500 transition-colors hover:bg-gray-500 hover:text-gray-700"
         type="button"
         aria-label="Dismiss alert"
         @click="fechar"
