@@ -1,6 +1,7 @@
 <template>
     <div class="grid grid-cols-3 gap-4 mt-[10vh] px-[20vw]">
-        <div class="col-span-3 text-center mb-8 animate-[fadeIn_1s_ease-out_forwards]">
+        <Alerta v-if="msg" :msg="msg" :fechar="fecharAlerta" class="fixed top-20 left-1/2 -translate-x-1/2 z-20 w-fit mb-4 animate-[fadeIn_1s_ease-out_forwards]" />
+        <div class="col-span-3 text-center mb-8 animate-[fadeIn_200ms_ease-out_forwards]">
             <h1 class="text-2xl text-texto text-shadow-texto font-opensans-bold mb-4">Contato</h1>
             <p class="text-texto text-shadow-texto mb-6 font-montserrat">Entre em contato conosco para mais informações.</p>
         </div>
@@ -77,7 +78,13 @@
     </div>
 </template>
 <script setup>
+    import Alerta from './Contato/Alerta.vue';
     import CampoForm from './Contato/CampoForm.vue';
+    import { ref } from 'vue';
+
+    const msg = ref('');
+    const time = ref(5000);
+    let alertEvent = '';
 
     function enviarFormulario(){
         const campos = Array.from(document.querySelectorAll('form input, form textarea'));
@@ -100,6 +107,19 @@
         })
         const dados = campos.map(campo => ({nome: campo.name, valor: campo.value}));
         console.log(dados);
+        exibirAlerta('Formulário enviado com sucesso!');
+    }
+
+    function exibirAlerta(mensagem) {
+        msg.value = mensagem;
+        alertEvent = setTimeout(() => {
+            msg.value = '';
+        }, time.value);
+    }
+
+    function fecharAlerta() {
+        clearTimeout(alertEvent);
+        msg.value = '';
     }
 </script>
 <style>

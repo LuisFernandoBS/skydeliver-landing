@@ -24,7 +24,7 @@ import { vMaska } from "maska/vue"
 
 export default {
     directives: { maska: vMaska },
-     props: {
+    props: {
         type: String,
         id: String,
         label: String,
