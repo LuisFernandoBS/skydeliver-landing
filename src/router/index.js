@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
 const InicioPage = () => import('@/pages/InicioPage.vue');
-// const SobrePage = () => import('@/pages/SobrePage.vue');
+const PlanosPage = () => import('@/pages/PlanosPage.vue');
 const ContatoPage = () => import('@/pages/ContatoPage.vue');
 
 const routes = [
@@ -12,7 +12,8 @@ const routes = [
         component: DefaultLayout,
         children: [
             { path: '', component: InicioPage },
-            { path: 'contato', component: ContatoPage }
+            { path: 'contato', component: ContatoPage },
+            { path: 'planos', component: PlanosPage }
         ]
     }
 ]
