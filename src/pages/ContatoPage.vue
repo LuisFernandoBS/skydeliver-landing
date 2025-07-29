@@ -28,7 +28,7 @@
                     <h2 class="text-xl text-texto text-shadow-texto font-opensans-bold my-6 px-8">Formulário de Contato</h2>
                     <form @submit.prevent="enviarFormulario" class="flex flex-col space-y-4 px-5">
                         <CampoForm id="nomeEmpresa" type="text" label="Nome da empresa" :required="true"/>
-                        <CampoForm id="cnpj" type="text" label="CNPJ" :required="true"/>
+                        <CampoForm id="cnpj" type="text" label="CNPJ" :required="true" mask="##.###.###/####-##"/>
                         <CampoForm id="emailCorporativo" type="text" label="Email" :required="true"/>
                         <CampoForm id="numEstimadoEntrega" type="number" label="Numero estimado de entregas/mês" />
                         <label for="mensagem" class="relative">
@@ -42,7 +42,7 @@
                             maxlength="400"
                             required></textarea>
         
-                            <span class="absolute inset-y-0 start-3 -translate-y-4 mt-2 h-fit bg-fundo px-0.5 text-sm font-medium text-texto transition-transform peer-placeholder-shown:-translate-y-0 peer-focus:-translate-y-4"> Mensagem </span>
+                            <span class="absolute inset-y-0 start-3 -translate-y-4 mt-2 h-fit bg-fundo px-0.5 text-sm font-medium text-texto transition-transform peer-placeholder-shown:-translate-y-0 peer-focus:-translate-y-4"> Mensagem* </span>
                         </label>
                         <div class="justify-between flex items-center">
                             <span class="text-texto font-montserrat text-[10px] w-[50%]">Campos com * é obrigatorio o preenchimento.</span>
@@ -80,18 +80,26 @@
     import CampoForm from './Contato/CampoForm.vue';
 
     function enviarFormulario(){
-        const campos = document.querySelectorAll('form input, form textarea');
-        campos.forEach(campo=>{
-            if(campo.value.trim() === ''){
+        const campos = Array.from(document.querySelectorAll('form input, form textarea'));
+        campos.forEach(campo => {
+            if(campo.getAttribute('required') && campo.value.trim() === ''){
                 alert(`O campo ${campo.name} é obrigatório.`);
                 campo.focus();
-                campo.classList.add('border-red-500');
                 return;
             }
-            campo.classList.remove('border-red-500');
+            if(campo.name === 'CNPJ' && !/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/.test(campo.value)){
+                alert('CNPJ inválido.');
+                campo.focus();
+                return;
+            }
+            if(campo.name === 'Email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(campo.value)){
+                alert('Email inválido.');
+                campo.focus();
+                return;
+            }
         })
-        
-        console.log(campos);
+        const dados = campos.map(campo => ({nome: campo.name, valor: campo.value}));
+        console.log(dados);
     }
 </script>
 <style>
