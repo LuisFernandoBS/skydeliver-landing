@@ -16,6 +16,7 @@
             <p class="text-[14px] text-texto text-center lg:text-start mb-8 px-10 font-montserrat-light">Tecnologia com drones autônomos para entregas mais seguras, ecológicas e rápidas.</p>
             <a
             class="group relative inline-flex items-center overflow-hidden rounded-sm bg-primaria px-8 py-3 text-texto focus:ring-3 focus:outline-hidden"
+            @click="selecionarMenu('planos')"
             href="#"
             >
                 <span class="absolute -end-full transition-all group-hover:end-4">
@@ -41,8 +42,13 @@
     </div>
  </template>
  <script>
+ import { inject } from 'vue';
+
  export default {
-    
+     setup() {
+        const selecionarMenu = inject('selecionarMenu');
+        return { selecionarMenu }
+    }
  }
  </script>
  <style scoped>

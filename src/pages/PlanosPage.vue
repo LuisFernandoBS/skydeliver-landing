@@ -125,6 +125,7 @@
                 
                         <a
                         href="#"
+                        @click="selecionarMenu('contato')"
                         class="mt-8 mx-auto block w-2/3 rounded-full border border-indigo-600 bg-indigo-600 px-12 py-3 text-center text-sm font-medium text-white hover:bg-indigo-700 hover:ring-1 hover:ring-indigo-700 focus:outline-hidden"
                         >
                         Solicitar proposta
@@ -232,6 +233,7 @@
                         <a
                         href="#"
                         class="mt-8 mx-auto w-2/3 block rounded-full border border-indigo-600 dark:border-texto bg-fundo px-12 py-3 text-center text-sm font-medium text-indigo-600 dark:text-texto hover:ring-1 hover:ring-texto focus:outline-hidden"
+                        @click="selecionarMenu('contato')"
                         >
                         Solicitar proposta
                         </a>
@@ -242,8 +244,13 @@
     </div>
 </template>
 <script>
+import { inject } from 'vue';
+
 export default {
-    
+    setup() {
+        const selecionarMenu = inject('selecionarMenu');
+        return { selecionarMenu }
+    }
 }
 </script>
 <style scoped>
