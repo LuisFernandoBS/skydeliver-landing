@@ -1,6 +1,6 @@
 <template>
     <div class="grid grid-cols-3 gap-4 mt-0 md:mt-[10vh] px-[5vw] md:px-[10vw] xl:px-[20vw]">
-        <div class="col-span-3 text-center mb-3 sm:mb-8 animate-[fadeIn_200ms_ease-out_forwards]">
+        <div class="col-span-3 text-center mb-3 sm:mb-8 animate-[fadeIn_1s_ease-out_forwards]">
             <h1 class="text-2xl text-texto text-shadow-texto font-opensans-bold mb-4">Planos e Preços</h1>
             <p class="text-texto text-shadow-texto mb-2 sm:mb-6 font-montserrat">
                 Escolha o plano ideal para o seu negócio e comece a transformar suas entregas hoje mesmo.
@@ -10,7 +10,7 @@
             <div class="mx-auto max-w-[950px] px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-center md:gap-8">
 
-                    <div class="rounded-2xl border justify-center border-indigo-600 p-6 shadow-xs ring-1 ring-indigo-600 sm:order-last sm:px-8 lg:p-12 hover:shadow-2xl hover:shadow-indigo-600">
+                    <div class="rounded-2xl border justify-center border-indigo-600 p-6 shadow-xs ring-1 ring-indigo-600 sm:order-last sm:px-8 lg:p-12 hover:shadow-2xl hover:shadow-indigo-600 card-plano">
                         <div class="text-center">
                             <h2 class="text-lg font-medium text-texto">
                                 Plano PRO – SkyPro
@@ -131,7 +131,7 @@
                         </a>
                     </div>
                 
-                    <div class="rounded-2xl border border-texto p-6 shadow-xs sm:px-8 lg:p-12 hover:shadow-2xl hover:shadow-texto">
+                    <div class="rounded-2xl border border-texto p-6 shadow-xs sm:px-8 lg:p-12 hover:shadow-2xl hover:shadow-texto card-plano">
                         <div class="text-center">
                             <h2 class="text-lg font-medium text-texto">
                                 Plano Base – SkySmart
@@ -254,4 +254,18 @@ export default {
     ul > li:hover > img {
         animation: fadeIn 0.3s ease-out forwards;
     }
+
+    .card-plano{
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-plano:last-child{
+        animation: fadeInLeftDefault 1s ease-out forwards;
+    }
+
+    .card-plano:first-child{
+        animation: fadeInRightDefault 1s ease-out forwards;
+    }
+
+
 </style>
